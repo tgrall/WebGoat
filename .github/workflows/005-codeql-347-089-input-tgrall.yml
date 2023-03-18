@@ -3,7 +3,12 @@ name: "002-CodeQL tgrall Default"
 
 on:
   workflow_dispatch:
-  
+  workflow_dispatch:
+    inputs:
+      codeql-include-tags:
+        description: 'CodeQL query tags to include'
+        required: true
+          
 jobs:
   analyze:
     name: Analyze
@@ -31,12 +36,14 @@ jobs:
       uses: tgrall/codeql-action/init@issue-1589-config-param
       with:
         languages: ${{ matrix.language }}
-        # If you wish to specify custom queries, you can do so here or in a config file.
-        # By default, queries listed here will override any specified in a config file.
-        # Prefix the list here with "+" to use these queries and those in the config file.
-
-        # Details on CodeQL's query packs refer to : https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning#using-queries-in-ql-packs
-        # queries: security-extended,security-and-quality
+        configuration: |
+          disable-default-queries: true
+          queries:
+            - uses: security-extended
+            - uses: security-and-quality
+          query-filters:
+            - include:
+                tags: /${{ github.event.inputs.codeql-include-tags }}/ 
 
     -   name: Set up JDK 17
         uses: actions/setup-java@v3
