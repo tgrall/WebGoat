@@ -2,7 +2,6 @@ name: "005-CodeQL input tgrall 347-089"
 
 on:
   workflow_dispatch:
-  workflow_dispatch:
     inputs:
       codeql-include-tags:
         description: 'CodeQL query tags to include'
