@@ -1,5 +1,5 @@
 
-name: "002-CodeQL tgrall Default"
+name: "003-CodeQL tgrall Default"
 
 on:
   workflow_dispatch:
