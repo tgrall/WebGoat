@@ -38,7 +38,7 @@ jobs:
             - uses: security-and-quality
           query-filters:
             - include:
-          tags: /cwe-020/
+                tags: /cwe-020/
 
     -   name: Set up JDK 17
         uses: actions/setup-java@v3
