@@ -1,5 +1,5 @@
 
-name: "CodeQL Default"
+name: "001-CodeQL Default"
 
 on:
   workflow_dispatch:
